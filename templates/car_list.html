@@ -1,0 +1,17 @@
+<h1>Машины</h1>
+
+{% for i in car %}
+
+<h2>Название машины - {{ i.title }}</h2>
+<p>ФИО покупателя - {{ i.person }}</p>
+
+<h4>Номер машины - {{ i.statenumbercar.number_car }}</h4>
+
+<h4>Категории</h4>
+<p>
+    {% for cat in i.categories.all %}
+        {{ cat.name }}
+    {% endfor %}
+</p>
+
+{% endfor %}

@@ -13,9 +13,10 @@ class CategoryCar(models.Model):
 class Car(models.Model):
     title = models.CharField(max_length=100, default='BMW')
     person = models.CharField(max_length=100, default='Иванов Иван')
+    categories = models.ManyToManyField(CategoryCar, null=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.title}Категории: {', '.join(i.name for i in self.categories.all())}'
 
 # one to one
 
