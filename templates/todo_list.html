@@ -1,0 +1,13 @@
+<a href="/create_todo/">Добавить</a>
+{% for i in todo_list %}
+
+<p>{{ i.title }}</p>
+<p>{{ i.status }}</p>
+<p>{{ i.comment }}</p>
+<p>{{ i.created_at }}</p>
+<p>{{ i.updated_at }}</p>
+
+<a href="/todo_list/{{ i.id }}/update/">Изменить</a>
+<a href="/todo_list/{{ i.id }}/delete/">Удалить</a>
+
+{% endfor %}
