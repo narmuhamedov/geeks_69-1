@@ -2,17 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-
+from . import models, forms
 
 #register
 def register_view(request):
     if request.method == 'POST':
-        form_obj = UserCreationForm(request.POST)
+        form_obj = forms.CustomRegisterForm(request.POST, request.FILES)
         if form_obj.is_valid():
             form_obj.save()
             return redirect('/login/')
     else:
-        form_obj = UserCreationForm()
+        form_obj = forms.CustomRegisterForm()
 
     return render(request, 'register.html', {'form': form_obj})
 
@@ -40,6 +40,6 @@ def profile_view(request):
     if not request.user.is_authenticated:
         return redirect('/login/')
 
-    user = User.objects.get(id=request.user.id)
+    user = models.CustomUser.objects.get(id=request.user.id)
     return render(request, 'profile.html', {'user': user})
 
