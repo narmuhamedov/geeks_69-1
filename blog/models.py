@@ -15,6 +15,7 @@ class Blog(models.Model):
                                    default='Комедия', max_length=100)
     url_blog = models.URLField(verbose_name='Есть ссылка на youtube?', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    views = models.PositiveIntegerField(default=0, null=True)
 
     class Meta:
         verbose_name = 'блог'
