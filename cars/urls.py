@@ -1,7 +1,7 @@
 from django.urls import path
-from cars.views import car_list_view
+from cars.views import CarListView
 
 urlpatterns = [
-    path('car_list/', car_list_view)
+    path('car_list/', CarListView.as_view())
 ]
 
